@@ -137,12 +137,13 @@ _.extend(Document.prototype, {
     return this._data.body;
   },
 
-  createParagraph: function () {
+  createParagraph: function (text) {
+    if (text === undefined) text = '';
     return {
       type: 'p',
       runs: [{
         type: 'r',
-        text: ''
+        text: text
       }]
     };
   },

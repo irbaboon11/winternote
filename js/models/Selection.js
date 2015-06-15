@@ -85,7 +85,7 @@ _.extend(Selection.prototype, {
    * @param {Node} node
    */
   selectNode: function (node) {
-    var start = this._document.findNodeOffset(node);
+    var start = this._document.findOffset(node);
     var size = this._document.getNodeSize(node);
 
     this._range.setStart(start);

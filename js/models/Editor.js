@@ -111,7 +111,11 @@ _.extend(Editor.prototype, {
     var para = position.stack[1];
 
     // TODO split text
-    doc.body.splice(doc.body.indexOf(para) + 1, 0, this._document.createParagraph());
+    var currentText = para.runs[0].text.slice(0, position.offset);
+    var nextText = para.runs[0].text.slice(position.offset);
+
+    para.runs[0].text = currentText;
+    doc.body.splice(doc.body.indexOf(para) + 1, 0, this._document.createParagraph(nextText));
     this._selection.selectNode(para).collapse(true);
   }
 });
